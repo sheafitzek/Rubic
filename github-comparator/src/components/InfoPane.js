@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 
-class infoPane extends Component {
+class InfoPane extends Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ class infoPane extends Component {
   }
 }
 
-export default infoPane;
+export default InfoPane;
