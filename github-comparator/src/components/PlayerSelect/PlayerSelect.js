@@ -8,11 +8,13 @@ class PlayerSelect extends React.Component {
 
 	goToApp(e) {
 		e.preventDefault();
-
-		const players = `${this.Player1.value}-vs-${this.player2.value}`;
+		
+		const player1 = this.Player1.value;
+		const player2 = this.Player2.value;
+		const players = `${player1}-vs-${player2}`;
 
 		// callback from Index.js
-		this.props.getPlayers(`${this.player1.value}`, `${this.player2.value}`);
+		this.props.getPlayers(`${player1}`, `${player2}`);
 
 		this.context.router.transitionTo(`/compare/${players}`);
 	}
