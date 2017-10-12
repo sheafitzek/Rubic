@@ -15,12 +15,20 @@ const Root = ()=> {
 		this.props.player1 = player1;
 		this.props.player2 = player2;
 	}
-
+	//this function returns the PlayerSelect component with props as jsx
+	const SelectPlayers = (props) => {
+		return (
+			<PlayerSelect
+				getPlayers = {getPlayers}
+			/>
+		);
+	}
 	return(
 		<BrowserRouter>
 			<div>
 				<Switch>
-					<Route exact path="/" component={PlayerSelect} getPlayers={this.getPlayers} />
+					//Passing the SelectPlayers function makes getPlayers available to PlayerSelect
+					<Route exact path="/" component={SelectPlayers}/>
 					{/*<Route path="/compare/" component={App}/>*/}
 					<Route path="/compare/" render={(props)=> ( <App player1={this.player1} player2={this.player2}/> )} />
 					<Route component={NotFound}/>
