@@ -5,6 +5,11 @@ import './PlayerSelect.css';
 import PropTypes from 'prop-types';
 
 class PlayerSelect extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.goToApp = this.goToApp.bind(this);
+	}
 	goToApp(e) {
 		e.preventDefault();
 
@@ -15,36 +20,40 @@ class PlayerSelect extends React.Component {
 		this.props.getPlayers(`${this.player1.value}`, `${this.player2.value}`);
 
 		// compose a route with the above variable that should lead to App.js
-		this.context.router.transitionTo(`/compare/${players}`);
+		this.context.router.history.push(`/compare/${players}`);
 	}
 
 	render() {
 		return (
-			<form className="player-selector" onSubmit={(e)=> this.goToApp(e)}> {/* inline binding */}
+			<form className="player-selector" onSubmit={this.goToApp}>
 				{/* input value from forms should update player1 & player2 props in the getPlayers function */}
 				<h2>Please Enter the Competitors</h2>
 				<p>You must either enter two github usernames or two github repos</p>
 				<input
 					type="text"
 					placeholder="User/Repo Name"
-					ref={(input)=> {this.player1 = input}}
+					ref={(input) => {
+						this.player1 = input;
+					}}
 					required
 				/>
 				<input
 					type="text"
 					placeholder="User/Repo Name"
-					ref={(input)=> {this.player2 = input}}
+					ref={(input) => {
+						this.player2 = input;
+					}}
 					required
 				/>
 				<button type="submit">Compare 🡒</button>
 			</form>
-		)
+		);
 	}
 }
 
 // needed to access BrowserRouter from index.js & compose the route above
 PlayerSelect.contextTypes = {
-	router: PropTypes.object,
-}
+	router : PropTypes.object.isRequired,
+};
 
 export default PlayerSelect;
