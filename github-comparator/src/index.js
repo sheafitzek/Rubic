@@ -14,8 +14,8 @@ class Root extends React.Component {
 		super();
 
 		let player1 = null;
-		let player2 = null,
-			getPlayers = this.getPlayers.bind(this);
+		let player2 = null;
+		this.getPlayers = this.getPlayers.bind(this);
 	}
 
 	// callback to get players from PlayerSelect.js
@@ -27,24 +27,22 @@ class Root extends React.Component {
 	render() {
 		return (
 			<BrowserRouter>
-				<div>
-					<Switch>
-						<Route
-							exact
-							path="/"
-							render={(props) => <PlayerSelect getPlayers={this.getPlayers} />}
-						/>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={(props) => <PlayerSelect getPlayers={this.getPlayers} />}
+          />
 
-						<Route
-							path="/compare/"
-							render={(props) => (
-								<App player1={this.player1} player2={this.player2} />
-							)}
-						/>
+          <Route
+            path="/compare/"
+            render={(props) => (
+              <App player1={this.player1} player2={this.player2} />
+            )}
+          />
 
-						<Route component={NotFound} />
-					</Switch>
-				</div>
+          <Route component={NotFound} />
+        </Switch>
 			</BrowserRouter>
 		);
 	}
