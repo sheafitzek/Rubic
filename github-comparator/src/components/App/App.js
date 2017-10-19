@@ -6,57 +6,71 @@ import Header from './Header/Header';
 import Content from './Content/Content';
 import Footer from './Footer/Footer';
 
+import {apiQuery, getPlayerStats} from '../../js/api';
+
+// import userStats from '../../js/getUserStats';
+
 class App extends React.Component {
 	constructor() {
 		super();
 
 		// bind functions 'this' to App
 		// this.<function> = this.<function>.bind(this);
+		this.apiQuery = apiQuery.bind(this);
+		this.getPlayerStats = getPlayerStats.bind(this);
 
 		// initial state
 		this.state = {
-			users: {
-				user1: {
-					name: `user1`,
-					repos: 0,
-					stars: 0,
-					commits: 0,
+			users : {
+				player1 : {
+					avatar    : `img`, // avatar_url
+					handle    : `user1`, // login
+					name      : `name`, // name
+					type      : `user`, // User
+					repos     : 0, // public_repos
+					gists     : 0, // public_gists
+					followers : 0, // followers
+					following : 0, // following
 				},
-				user2: {
-					name: `user2`,
-					repos: 0,
-					stars: 0,
-					commits: 0,
+				player2 : {
+					avatar    : `img`, // avatar_url
+					handle    : `user2`, // login
+					name      : `name`, // name
+					type      : `user`, // User
+					repos     : 0, // public_repos
+					gists     : 0, // public_gists
+					followers : 0, // followers
+					following : 0, // following
 				},
 			},
-			repos: {
-				repo1: {
-					name: `repo1`,
-					contributers: 0,
-					stars: 0,
-					commits: 0,
+			repos : {
+				repo1 : {
+					name         : `repo1`,
+					contributers : 0,
+					stars        : 0,
+					commits      : 0,
 				},
-				repo2: {
-					name: `repo2`,
-					contributers: 0,
-					stars: 0,
-					commits: 0,
-				}
-			}
-		}
+				repo2 : {
+					name         : `repo2`,
+					contributers : 0,
+					stars        : 0,
+					commits      : 0,
+				},
+			},
+		};
 	}
 
-	// functions to parse API call & change state
-	// <function>(){
-		
-	// }
+	componentDidMount() {
+		this.apiQuery(this.props.player1);
+		this.apiQuery(this.props.player2);
+	}
 
 	render() {
 		return (
 			<div className="App">
-				<Header/>
-				<Content /> {/* <function>={this.<function>} */}
-				<Footer/>
+				<Header />
+				<Content player1={this.state.users.player1} player2={this.state.users.player2} />
+				<Footer />
 			</div>
 		);
 	}
