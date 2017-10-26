@@ -22,40 +22,8 @@ class App extends React.Component {
 		// initial state
 		this.state = {
 			users : {
-				player1 : {
-					avatar    : `img`, // avatar_url
-					handle    : `user1`, // login
-					name      : `name`, // name
-					type      : `user`, // User
-					repos     : 0, // public_repos
-					gists     : 0, // public_gists
-					followers : 0, // followers
-					following : 0, // following
-				},
-				player2 : {
-					avatar    : `img`, // avatar_url
-					handle    : `user2`, // login
-					name      : `name`, // name
-					type      : `user`, // User
-					repos     : 0, // public_repos
-					gists     : 0, // public_gists
-					followers : 0, // followers
-					following : 0, // following
-				},
-			},
-			repos : {
-				repo1 : {
-					name         : `repo1`,
-					contributers : 0,
-					stars        : 0,
-					commits      : 0,
-				},
-				repo2 : {
-					name         : `repo2`,
-					contributers : 0,
-					stars        : 0,
-					commits      : 0,
-				},
+				player1 : {},
+				player2 : {},
 			},
 		};
 	}

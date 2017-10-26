@@ -6,8 +6,7 @@ const NotFound = (props)=> {
 	return(
 		<div>
 			<h2>There Seems to be an Error</h2>
-			<p>Are You Sure That Those Users/Repos Exist?</p>
-			<p>Did You Mix Users/Repos?</p>
+			<p>Are You Sure That Those Both Users Exist?</p>
 			<p>Please Check Your Spelling & Try Again</p>
 		</div>
 	)
