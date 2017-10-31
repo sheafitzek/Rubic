@@ -2,6 +2,8 @@ import React from 'react';
 
 import './App.css';
 
+import PropTypes from 'prop-types';
+
 import Header from './Header/Header';
 import Content from './Content/Content';
 import Footer from './Footer/Footer';
@@ -16,6 +18,8 @@ class App extends React.Component {
 
 		// bind functions 'this' to App
 		// this.<function> = this.<function>.bind(this);
+		this.goToNotFound = this.goToNotFound.bind(this);
+
 		this.apiQuery = apiQuery.bind(this);
 		this.getPlayerStats = getPlayerStats.bind(this);
 
@@ -26,6 +30,12 @@ class App extends React.Component {
 				player2 : {},
 			},
 		};
+	}
+
+	goToNotFound(e) {
+		e.preventDefault();
+
+		this.context.router.history.push(`/not-found/`);
 	}
 
 	componentDidMount() {
@@ -43,5 +53,10 @@ class App extends React.Component {
 		);
 	}
 }
+
+// needed to access BrowserRouter from index.js & compose the route above
+App.contextTypes = {
+	router : PropTypes.object.isRequired,
+};
 
 export default App;

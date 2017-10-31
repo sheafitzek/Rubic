@@ -7,6 +7,10 @@ export function apiQuery(player) {
 		let commitData = data.commitData.data;
 		let repoData = data.roughRepoData.reduce((a, b) => a.concat(b), []);
 
+		if (userData.message === `Not Found`) {
+			this.goToNotFound();
+		}
+
 		const stargazers = repoData.reduce((sum, item, index) => {
 			sum += item.stargazers_count;
 
@@ -113,6 +117,7 @@ export function apiQuery(player) {
 }
 
 export function getPlayerStats(player) {
+	console.log(`this 1:`, this);
 	const userUrl = `https://api.github.com/users/${player}`;
 	const repoUrl = `https://api.github.com/search/repositories?q=user:${player}&per_page=100`;
 	const commitUrl = `https://api.github.com/search/commits?q=committer:${player}&per_page=100`;
@@ -160,6 +165,7 @@ export function getPlayerStats(player) {
 				});
 			});
 	}
+	console.log(`this 2:`, this);
 
 	return getRepoStats(repoUrl).then(() => {
 		return axios
@@ -174,6 +180,8 @@ export function getPlayerStats(player) {
 				return data;
 			})
 			.catch(function(error) {
+				console.log(`this 3:`, this);
+				this.goToNotFound();
 				console.log(error);
 			});
 	});
