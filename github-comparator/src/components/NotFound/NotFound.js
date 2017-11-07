@@ -21,7 +21,7 @@ class NotFound extends React.Component{
 				<p>Are You Sure That Those Both Users Exist?</p>
 				<p>Please Check Your Spelling & Try Again</p>
 
-				<button class="try-again">Try Again</button>
+				<button className="try-again" onClick={this.goToPlayerSelect}>Try Again</button>
 			</div>
 		)
 	}

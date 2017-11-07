@@ -10,8 +10,6 @@ import Footer from './Footer/Footer';
 
 import {apiQuery, getPlayerStats} from '../../js/api';
 
-// import userStats from '../../js/getUserStats';
-
 class App extends React.Component {
 	constructor() {
 		super();
@@ -19,6 +17,7 @@ class App extends React.Component {
 		// bind functions 'this' to App
 		// this.<function> = this.<function>.bind(this);
 		this.goToNotFound = this.goToNotFound.bind(this);
+		this.goToPlayerSelect = this.goToPlayerSelect.bind(this);
 
 		this.apiQuery = apiQuery.bind(this);
 		this.getPlayerStats = getPlayerStats.bind(this);
@@ -32,10 +31,11 @@ class App extends React.Component {
 		};
 	}
 
-	goToNotFound(e) {
-		e.preventDefault();
-
+	goToNotFound() {
 		this.context.router.history.push(`/not-found/`);
+	}
+	goToPlayerSelect() {
+		this.context.router.history.push(`/`);
 	}
 
 	componentDidMount() {
@@ -47,7 +47,7 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<Header />
-				<Content player1={this.state.users.player1} player2={this.state.users.player2} />
+				<Content player1={this.state.users.player1} player2={this.state.users.player2} goToPlayerSelect={this.goToPlayerSelect}/>
 				<Footer />
 			</div>
 		);
