@@ -20,6 +20,8 @@ class Content extends React.Component {
 							)
 					}*/}
 				</ul>
+
+				<button className="try-again" onClick={this.props.goToPlayerSelect}>Try Again</button>
 			</div>
 		)
 	}

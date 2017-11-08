@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-// import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker';
 
 import './index.css';
 
@@ -50,4 +50,4 @@ class Root extends React.Component {
 
 render(<Root />, document.querySelector(`#root`));
 
-// registerServiceWorker();
+registerServiceWorker();

@@ -2,9 +2,13 @@ import React from 'react';
 
 import './App.css';
 
+import PropTypes from 'prop-types';
+
 import Header from './Header/Header';
 import Content from './Content/Content';
 import Footer from './Footer/Footer';
+
+import {apiQuery, getPlayerStats} from '../../js/api';
 
 class App extends React.Component {
 	constructor() {
@@ -12,54 +16,47 @@ class App extends React.Component {
 
 		// bind functions 'this' to App
 		// this.<function> = this.<function>.bind(this);
+		this.goToNotFound = this.goToNotFound.bind(this);
+		this.goToPlayerSelect = this.goToPlayerSelect.bind(this);
+
+		this.apiQuery = apiQuery.bind(this);
+		this.getPlayerStats = getPlayerStats.bind(this);
 
 		// initial state
 		this.state = {
-			users: {
-				user1: {
-					name: `user1`,
-					repos: 0,
-					stars: 0,
-					commits: 0,
-				},
-				user2: {
-					name: `user2`,
-					repos: 0,
-					stars: 0,
-					commits: 0,
-				},
+			users : {
+				player1 : {},
+				player2 : {},
 			},
-			repos: {
-				repo1: {
-					name: `repo1`,
-					contributers: 0,
-					stars: 0,
-					commits: 0,
-				},
-				repo2: {
-					name: `repo2`,
-					contributers: 0,
-					stars: 0,
-					commits: 0,
-				}
-			}
-		}
+		};
 	}
 
-	// functions to parse API call & change state
-	// <function>(){
-		
-	// }
+	goToNotFound() {
+		this.context.router.history.push(`/not-found/`);
+	}
+	goToPlayerSelect() {
+		this.context.router.history.push(`/`);
+	}
+
+	componentDidMount() {
+		this.apiQuery(this.props.player1);
+		this.apiQuery(this.props.player2);
+	}
 
 	render() {
 		return (
 			<div className="App">
-				<Header/>
-				<Content /> {/* <function>={this.<function>} */}
-				<Footer/>
+				<Header />
+				<Content player1={this.state.users.player1} player2={this.state.users.player2} goToPlayerSelect={this.goToPlayerSelect}/>
+				<Footer />
 			</div>
 		);
 	}
 }
+
+// needed to access BrowserRouter from index.js & compose the route above
+App.contextTypes = {
+	router : PropTypes.object.isRequired,
+};
 
 export default App;

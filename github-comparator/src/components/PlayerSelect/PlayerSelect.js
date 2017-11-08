@@ -28,10 +28,10 @@ class PlayerSelect extends React.Component {
 			<form className="player-selector" onSubmit={this.goToApp}>
 				{/* input value from forms should update player1 & player2 props in the getPlayers function */}
 				<h2>Please Enter the Competitors</h2>
-				<p>You must either enter two github usernames or two github repos</p>
+				<p>Enter two github usernames</p>
 				<input
 					type="text"
-					placeholder="User/Repo Name"
+					placeholder="Username"
 					ref={(input) => {
 						this.player1 = input;
 					}}
@@ -39,7 +39,7 @@ class PlayerSelect extends React.Component {
 				/>
 				<input
 					type="text"
-					placeholder="User/Repo Name"
+					placeholder="Username"
 					ref={(input) => {
 						this.player2 = input;
 					}}
