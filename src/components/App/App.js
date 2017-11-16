@@ -1,12 +1,10 @@
 import React from 'react';
 
-import './App.css';
-
 import PropTypes from 'prop-types';
 
-import Header from './Header/Header';
-import Content from './Content/Content';
-import Footer from './Footer/Footer';
+import Header from '../Header/Header';
+import Content from '../Content/Content';
+import Footer from '../Footer/Footer';
 
 import {apiQuery, getPlayerStats} from '../../js/api';
 
@@ -44,13 +42,11 @@ class App extends React.Component {
 	}
 
 	render() {
-		return (
-			<div className="App">
-				<Header />
-				<Content player1={this.state.users.player1} player2={this.state.users.player2} goToPlayerSelect={this.goToPlayerSelect}/>
-				<Footer />
-			</div>
-		);
+		return [
+			<Header />,
+			<Content details={this.state.users} goToPlayerSelect={this.goToPlayerSelect} />,
+			<Footer />,
+		];
 	}
 }
 
