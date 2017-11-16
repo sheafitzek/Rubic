@@ -1,26 +1,39 @@
 {
-  "name": "github-comparator",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.16.2",
-    "moment": "^2.19.1",
-    "prop-types": "^15.6.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.14",
-    "styled-components": "^2.2.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "eslint": "^4.8.0",
-    "eslint-plugin-react": "^7.4.0"
-  },
-  "peerDependencies": {}
+	"name": "Rubic",
+	"version": "1.0.0",
+	"description": "Compare Github user stats",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/chingu-coders/Voyage2-Turtles-08.git"
+	},
+	"author": "Shea Fitzek",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/chingu-coders/Voyage2-Turtles-08/issues"
+	},
+	"homepage": "https://github.com/chingu-coders/Voyage2-Turtles-08",
+	"private": true,
+	"dependencies": {
+		"axios": "^0.16.2",
+		"moment": "^2.19.1",
+		"prop-types": "^15.6.0",
+		"react": "^16.0.0",
+		"react-dom": "^16.0.0",
+		"react-router-dom": "^4.2.2",
+		"react-scripts": "1.0.14",
+		"styled-components": "^2.2.3"
+	},
+	"scripts": {
+		"deploy": "npm run build&&gh-pages -d build",
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	},
+	"devDependencies": {
+		"eslint": "^4.8.0",
+		"eslint-plugin-react": "^7.4.0",
+		"gh-pages": "^1.0.0"
+	}
 }
