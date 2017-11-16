@@ -46,7 +46,7 @@ export function apiQuery(player) {
 
 			let since = moment(date).format('MM/DD/YYYY');
 			let compare = `${-duration.asYears().toFixed(2)} years`;
-			let display = `${-duration.years()} yrs, ${-duration.months()} mos, ${-duration.days()} days, ${-duration.hours()} hrs`;
+			let display = `${-duration.years()}y ${-duration.months()}m ${-duration.days()}d`;
 
 			return format === `since` ? since : format === `compare` ? compare : display;
 		};
@@ -64,7 +64,8 @@ export function apiQuery(player) {
 						handle            : userData.login,
 						name              : userData.name,
 						type              : userData.type,
-						location          : userData.html_url,
+						location          : userData.location,
+						html_url          : userData.html_url,
 						memberSince       : memberSince,
 
 						// comparison data
@@ -93,7 +94,8 @@ export function apiQuery(player) {
 						handle            : userData.login,
 						name              : userData.name,
 						type              : userData.type,
-						location          : userData.html_url,
+						location          : userData.location,
+						html_url          : userData.html_url,
 						memberSince       : memberSince,
 
 						// comparison data
