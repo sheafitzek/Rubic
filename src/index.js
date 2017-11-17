@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {HashRouter, Switch, Route} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 import {injectGlobal} from 'styled-components';
@@ -25,7 +25,7 @@ class Root extends React.Component {
 	};
 	render() {
 		return (
-			<BrowserRouter basename={process.env.PUBLIC_URL}>
+			<HashRouter>
 				<Switch>
 					<Route
 						key="playerSelect"
@@ -40,7 +40,7 @@ class Root extends React.Component {
 					/>
 					<Route key="notFound" component={NotFound} />
 				</Switch>
-			</BrowserRouter>
+			</HashRouter>
 		);
 	}
 }
