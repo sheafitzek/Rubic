@@ -1,5 +1,5 @@
 {
-	"name": "Rubic",
+	"name": "rubic",
 	"version": "1.0.0",
 	"description": "Compare Github user stats",
 	"main": "index.js",
@@ -12,7 +12,7 @@
 	"bugs": {
 		"url": "https://github.com/chingu-coders/Voyage2-Turtles-08/issues"
 	},
-	"homepage": "https://github.com/chingu-coders/Voyage2-Turtles-08",
+	"homepage": "https://github.com/Voyage2-Turtles-08",
 	"private": true,
 	"dependencies": {
 		"axios": "^0.16.2",
@@ -25,7 +25,7 @@
 		"styled-components": "^2.2.3"
 	},
 	"scripts": {
-		"deploy": "npm run build&&gh-pages -d build",
+		"deploy": "npm run build && gh-pages -d build",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test --env=jsdom",
