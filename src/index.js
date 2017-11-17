@@ -25,7 +25,7 @@ class Root extends React.Component {
 	};
 	render() {
 		return (
-			<BrowserRouter>
+			<BrowserRouter basename={process.env.PUBLIC_URL}>
 				<Switch>
 					<Route
 						key="playerSelect"
