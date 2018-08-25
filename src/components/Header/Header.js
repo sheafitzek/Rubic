@@ -2,30 +2,28 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-class Header extends React.Component {
-	render() {
-		return (
-			<Wrapper className="App-header">
-				<h1 className="App-title">Welcome to Rubic</h1>
-				<h2>Compare Github User Stats</h2>
-				<p>
-					Why Rubic? React + {' '}
-					<a
-						href="https://bevacqua.github.io/hubby/"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Hubby {' '}
-					</a>
-					+ Clone
-				</p>
-				<p>
-					How often do you <span>"crack the code"?</span>
-				</p>
-			</Wrapper>
-		);
-	}
-}
+const Header = () => {
+	return (
+		<Wrapper className="App-header">
+			<h1 className="App-title">Welcome to Rubic</h1>
+			<h2>Compare Github User Stats</h2>
+			<p>
+				Why Rubic? React + {` `}
+				<a
+					href="https://bevacqua.github.io/hubby/"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Hubby {` `}
+				</a>
+				+ Clone
+			</p>
+			<p>
+				How often do you <span>"crack the code"?</span>
+			</p>
+		</Wrapper>
+	);
+};
 
 export default Header;
 

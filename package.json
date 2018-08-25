@@ -1,18 +1,18 @@
 {
 	"name": "rubic",
 	"version": "1.0.0",
-	"description": "Compare Github user stats",
+	"description": "Compare Github User Stats",
 	"main": "index.js",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/chingu-coders/Voyage2-Turtles-08.git"
+		"url": "git+https://github.com/sheafitzek/Rubic.git"
 	},
 	"author": "Shea Fitzek",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/chingu-coders/Voyage2-Turtles-08/issues"
+		"url": "https://github.com/sheafitzek/Rubic/issues"
 	},
-	"homepage": "https://github.com/Voyage2-Turtles-08",
+	"homepage": "https://sheafitzek.github.io/Rubic",
 	"private": true,
 	"dependencies": {
 		"axios": "^0.16.2",

@@ -1,20 +1,22 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Profile from './Profile';
 import Categories from './Categories';
 
-class Player extends React.Component {
-	render() {
-		return (
-			<Wrapper className="Player">
-				<Profile details={this.props.details} />
-				<Categories details={this.props.details} />
-			</Wrapper>
-		);
-	}
-}
+const Player = (props) => {
+	return (
+		<Wrapper className="Player">
+			<Profile details={props.details} />
+			<Categories details={props.details} />
+		</Wrapper>
+	);
+};
+
+Player.propTypes = {
+	details : PropTypes.object.isRequired,
+};
 
 export default Player;
 

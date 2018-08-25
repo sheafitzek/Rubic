@@ -1,49 +1,34 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {HashRouter, Switch, Route} from 'react-router-dom';
-import registerServiceWorker from './registerServiceWorker';
-
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {injectGlobal} from 'styled-components';
+
+import registerServiceWorker from './registerServiceWorker';
 
 import App from './components/App/App';
 import PlayerSelect from './components/PlayerSelect/PlayerSelect';
 import NotFound from './components/NotFound/NotFound';
 
-class Root extends React.Component {
-	constructor() {
-		super();
+const basename = window.location.origin.includes(`github.io`)
+	? `/${window.location.pathname.split(`/`)[1]}`
+	: ``;
 
-		let player1 = null;
-		let player2 = null;
-		this.getPlayers = this.getPlayers.bind(this);
-	}
-
-	// callback to get players from PlayerSelect.js
-	getPlayers = (player1, player2) => {
-		this.player1 = player1;
-		this.player2 = player2;
-	};
-	render() {
-		return (
-			<HashRouter>
-				<Switch>
-					<Route
-						key="playerSelect"
-						exact
-						path="/"
-						render={(props) => <PlayerSelect getPlayers={this.getPlayers} />}
-					/>
-					<Route
-						key="app"
-						path="/compare/"
-						render={(props) => <App player1={this.player1} player2={this.player2} />}
-					/>
-					<Route key="notFound" component={NotFound} />
-				</Switch>
-			</HashRouter>
-		);
-	}
-}
+const Root = () => {
+	return (
+		<BrowserRouter basename={basename}>
+			<Switch>
+				<Route
+					key="playerSelect"
+					exact
+					path="/"
+					component={PlayerSelect}
+				/>
+				<Route path="/compare/:player1-vs-:player2" component={App} />
+				<Route component={NotFound} />
+			</Switch>
+		</BrowserRouter>
+	);
+};
 
 render(<Root />, document.querySelector(`#root`));
 
@@ -93,4 +78,5 @@ injectGlobal`
 			justify-content: center;
 			align-items: stretch;
 		}
+	}
 `;

@@ -1,54 +1,72 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-class Profile extends React.Component {
-	render() {
-		return [
-			<Handle key="Handle">{this.props.details.handle}</Handle>,
-			<Wrapper key="Player-Profile">
-				<img src={this.props.details.avatar} alt="Avatar" />
-				<div>
-					<div key="name">
-						<span>
-							Name: <span className="result">{this.props.details.name}</span>
+const Profile = (props) => {
+	return [
+		<Handle key="Handle">{props.details.handle}</Handle>,
+		<Wrapper key="Player-Profile">
+			<img src={props.details.avatar} alt="Avatar" />
+
+			<div>
+				<div key="name">
+					<span>
+						Name:{` `}
+						<span className="result">
+							{props.details.name}
 						</span>
-					</div>
-					<div key="location">
-						<span>
-							Location: <span className="result">{this.props.details.location}</span>
-						</span>
-					</div>
-					<div key="type">
-						<span>
-							Member Type: <span className="result">{this.props.details.type}</span>
-						</span>
-					</div>
-					<div key="memberSince">
-						<span>
-							Member Since:{' '}
-							<span className="result">{this.props.details.memberSince}</span>
-						</span>
-					</div>
-					<div key="html_url">
-						<span>
-							Github Profile:{' '}
-							<span className="result">
-								<a
-									href={this.props.details.html_url}
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									Link
-								</a>
-							</span>
-						</span>
-					</div>
+					</span>
 				</div>
-			</Wrapper>,
-		];
-	}
-}
+
+				<div key="location">
+					<span>
+						Location:{` `}
+						<span className="result">
+							{props.details.location}
+						</span>
+					</span>
+				</div>
+
+				<div key="type">
+					<span>
+						Member Type:{` `}
+						<span className="result">
+							{props.details.type}
+						</span>
+					</span>
+				</div>
+
+				<div key="memberSince">
+					<span>
+						Member Since:{` `}
+						<span className="result">
+							{props.details.memberSince}
+						</span>
+					</span>
+				</div>
+
+				<div key="html_url">
+					<span>
+						Github Profile:{` `}
+						<span className="result">
+							<a
+								href={props.details.html_url}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								Link
+							</a>
+						</span>
+					</span>
+				</div>
+			</div>
+		</Wrapper>,
+	];
+};
+
+Profile.propTypes = {
+	details : PropTypes.object.isRequired,
+};
 
 export default Profile;
 

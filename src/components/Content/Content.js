@@ -1,26 +1,35 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Player from './Player';
 
-class Content extends React.Component {
-	render() {
-		return (
-			<Wrapper className="App-Content">
-				<ul className="players">
-					{Object.keys(this.props.details).map((key) => (
-						<Player key={key} details={this.props.details[key]} />
-					))}
-				</ul>
+const Content = (props) => {
+	return (
+		<Wrapper className="App-Content">
+			<ul className="players">
+				{Object.keys(props.details).map((key) => (
+					<Player
+						key={key}
+						details={props.details[key]}
+					/>
+				))}
+			</ul>
 
-				<button className="try-again" onClick={this.props.goToPlayerSelect}>
-					Try Again
-				</button>
-			</Wrapper>
-		);
-	}
-}
+			<button
+				className="try-again"
+				onClick={props.goToPlayerSelect}
+			>
+				Try Again
+			</button>
+		</Wrapper>
+	);
+};
+
+Content.propTypes = {
+	details          : PropTypes.object.isRequired,
+	goToPlayerSelect : PropTypes.func.isRequired,
+};
 
 export default Content;
 

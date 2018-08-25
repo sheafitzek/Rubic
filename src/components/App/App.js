@@ -1,12 +1,11 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
+
+import {apiQuery, getPlayerStats} from '../../js/api';
 
 import Header from '../Header/Header';
 import Content from '../Content/Content';
 import Footer from '../Footer/Footer';
-
-import {apiQuery, getPlayerStats} from '../../js/api';
 
 class App extends React.Component {
 	constructor() {
@@ -29,6 +28,15 @@ class App extends React.Component {
 		};
 	}
 
+	componentDidMount() {
+		this.apiQuery(this.props.match.params.player1);
+		this.apiQuery(this.props.match.params.player2);
+	}
+
+	// shouldComponentUpdate(nextProps, nextState) {
+	// 	return this.state !== nextState;
+	// }
+
 	goToNotFound() {
 		this.context.router.history.push(`/not-found/`);
 	}
@@ -36,23 +44,27 @@ class App extends React.Component {
 		this.context.router.history.push(`/`);
 	}
 
-	componentDidMount() {
-		this.apiQuery(this.props.player1);
-		this.apiQuery(this.props.player2);
-	}
-
 	render() {
 		return [
-			<Header />,
-			<Content details={this.state.users} goToPlayerSelect={this.goToPlayerSelect} />,
-			<Footer />,
+			<Header key="header" />,
+			<Content
+				key="content"
+				details={this.state.users}
+				goToPlayerSelect={this.goToPlayerSelect}
+			/>,
+			<Footer key="footer" />,
 		];
 	}
 }
 
-// needed to access BrowserRouter from index.js & compose the route above
 App.contextTypes = {
 	router : PropTypes.object.isRequired,
+};
+
+App.propTypes = {
+	match : PropTypes.shape({
+		params : PropTypes.object.isRequired,
+	}).isRequired,
 };
 
 export default App;

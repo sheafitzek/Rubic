@@ -1,8 +1,6 @@
 import React from 'react';
-
-import styled from 'styled-components';
-
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -13,26 +11,31 @@ class PlayerSelect extends React.Component {
 
 		this.goToApp = this.goToApp.bind(this);
 	}
+
+	componentDidMount() {
+		this.player1Input.focus();
+	}
+
 	goToApp(e) {
 		e.preventDefault();
 
-		// variable to include in route below
-		const players = `${this.player1.value}-vs-${this.player2.value}`;
+		const players = `${this.player1Input.value}-vs-${this
+			.player2Input.value}`;
 
-		// invoke callback function passed as props from Index.js
-		this.props.getPlayers(`${this.player1.value}`, `${this.player2.value}`);
-
-		// compose a route with the above variable that should lead to App.js
 		this.context.router.history.push(`/compare/${players}`);
 	}
 
 	render() {
 		return [
-			<Header />,
-			<Form className="player-selector" onSubmit={this.goToApp}>
-				{/* input value from forms should update player1 & player2 props in the getPlayers function */}
+			<Header key="header" />,
+			<Form
+				key="form"
+				className="player-selector"
+				onSubmit={(e) => this.goToApp(e)}
+			>
 				<h2>Choose the Competitors</h2>
 				<p>Enter two github usernames</p>
+
 				<div className="input">
 					<div className="icon-case">
 						<i className="fa fa-github-alt" />
@@ -41,12 +44,12 @@ class PlayerSelect extends React.Component {
 						type="text"
 						placeholder="Player 1"
 						ref={(input) => {
-							this.player1 = input;
+							this.player1Input = input;
 						}}
 						required
 					/>
 				</div>
-				<button type="submit">↑ Compare ↓</button>
+
 				<div className="input">
 					<div className="icon-case">
 						<i className="fa fa-github-alt" />
@@ -55,13 +58,15 @@ class PlayerSelect extends React.Component {
 						type="text"
 						placeholder="Player 2"
 						ref={(input) => {
-							this.player2 = input;
+							this.player2Input = input;
 						}}
 						required
 					/>
 				</div>
+
+				<button type="submit">Compare</button>
 			</Form>,
-			<Footer />,
+			<Footer key="footer" />,
 		];
 	}
 }
@@ -109,6 +114,7 @@ const Form = styled.form`
 
 	.input {
 		display: flex;
+		margin: 0 0 1.5rem 0;
 	}
 
 	i {
@@ -124,7 +130,6 @@ const Form = styled.form`
 	}
 
 	button {
-		margin: 1.5rem;
 		height: 1.5rem;
 		color: lightgreen;
 		font-family: 'Electrolize';
